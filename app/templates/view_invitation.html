@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+</head>
+<body>
+    <div class="view_invitation">
+        <h1>{{ invitation.invitation_header }}</h1> 
+   <h2>{{ invitation.invitation_body }}</h2>
+   <h3>{{ invitation.invitation_footer }}</h3>
+    {% if current_user.id != invitation.sender_id %}
+    <a class="option" href="{{ url_for('accept_invitation', invitation=invitation.id) }}">Accept</a>
+    <a class="option" href="{{ url_for('reject_invitation', invitation=invitation.id) }}">Reject</a>  
+    {% endif %}
+    <a id="back" href="{{ url_for('invitations') }}">Back</a>
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content">
+        <h1>New Invitation</h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.invitation_header.label }} <br>
+                {{ form.invitation_header(size=140) }}
+                {% for error in form.invitation_header.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.invitation_body.label }} <br>
+                {{ form.invitation_body(size=140) }}
+                {% for error in form.invitation_body.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.invitation_footer.label }} <br>
+                {{ form.invitation_footer(size=140) }}
+                {% for error in form.invitation_footer.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.recipients.label }} <br>
+                {{ form.recipients() }}
+                {% for error in form.recipients.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+   
+{% endblock content %}

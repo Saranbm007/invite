@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+</head>
+<body>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Invite</a></li>
+                {% if current_user.is_anonymous %}
+                <li class="log"><a href="{{ url_for('login') }}">Login</a></li> 
+                {% else %}
+                <li class="log"><a href="{{ url_for('logout') }}">Logout</a></li> 
+                {% endif %}
+            </ul>
+        </nav>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock content %}
+    </div>
+</body>
+</html> 

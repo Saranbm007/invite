@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="content">
+    <h1>Welcome, {{ current_user.username }}</h1>
+
+    <div class="middle_nav">
+        <ul>
+            <li><a href="{{ url_for('new_invitation') }}">Create Invitation</a></li>
+            <li><a href="{{ url_for('invitations') }}">Invitations</a></li>
+            <li><a href="{{ url_for('created_invitations') }}">Sent Invitations</a></li>
+                
+        </ul>
+    </div>
+
+    {% if invitations %}
+        <div class="content">
+        <table>
+            <tr>
+                <th>
+                    {% if flag == 1 %}
+                        To 
+                    {% else %}
+                        From
+                    {% endif %}
+                </th>
+                <th>
+                    {% if flag == 1 %}
+                        Date sent
+                    {% else %}
+                        Date received
+                    {% endif %}
+                </th>
+
+            </tr>
+        {% for invitation in invitations %}
+            <tr valign="top">
+                {% if flag == 1 %}
+                <td><a href="{{ url_for('view_invitation', invitation=invitation.id )}}">{{ invitation.recipient.username }}</a></td>
+                {% else %}
+                <td><a href="{{ url_for('view_invitation', invitation=invitation.id )}}">{{ invitation.sender.username }}</a></td> 
+                {% endif %}
+                <td>{{ invitation.timestamp }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+    </div>
+{% endblock content %}
