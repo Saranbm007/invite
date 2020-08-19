@@ -1,0 +1,2 @@
+FLASK_APP=invite.py
+FLASK_DEBUG=1

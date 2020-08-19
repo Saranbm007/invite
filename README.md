@@ -7,14 +7,7 @@
 
 4.Activate the virtual environment.
 
-5.Install the following packages to the virtual environment:
-	pip install flask,
-	pip install flask-SQLalchemy,
-	pip install flask-migrate,
-	pip install flask-login,
-	pip install flask-WTF,
-	pip install email-validator,
-	pip install python-dotenv.
+5.Use the cmd pip install -r requirements.txt to install the required extensions
 
 6.To Intialize database:
 	flask db init,

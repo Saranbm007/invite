@@ -20,9 +20,7 @@ nav li {
     float: left;
 }
 
-nav li#log {
-    float: right;
-}
+
 
 nav li a{
   display: block;
@@ -55,16 +53,6 @@ nav li a:hover {
   }
 
   
-.sidenav {
-    flex: 25%;
-    height: 100%;
-  }
-  
-.content {
-
-    flex: 75%;
-}
-
 .middle_nav ul{
     list-style-type: none;
     margin: 0;
